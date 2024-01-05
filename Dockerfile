@@ -1,4 +1,4 @@
-FROM node:20-alpine
+FROM node:20-alpine as stage
 
 WORKDIR /src/app
 COPY . .
@@ -9,4 +9,4 @@ FROM node:20-alpine
 
 WORKDIR /src/app
 COPY --from=stage /src/app/dist ./dist
-CMD [ "node", "dist/main.js"]
+CMD [ "node", "dist/main.js" ]
